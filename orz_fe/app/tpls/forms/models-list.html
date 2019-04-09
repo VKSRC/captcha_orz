@@ -1,0 +1,106 @@
+<page-title ng-if="layoutOptions.pageTitles" title="模型列表" description="可根据验证码类型、模型编号、验证码长度等进行过滤"></page-title>
+
+
+<!-- Custom column filtering -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+        <div class="panel-options">
+            <a href="" data-toggle="panel">
+                <span class="collapse-icon">&ndash;</span>
+                <span class="expand-icon">+</span>
+            </a>
+            <a href="" data-toggle="remove">
+                &times;
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+        <table class="table table-striped table-bordered" id="example-3">
+            <thead>
+            <tr class="replace-inputs">
+                <th>类型</th>
+                <th>模型编号</th>
+                <th>是否存在干扰线</th>
+                <th>样本数量</th>
+                <th>长度</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>大小写字母+数字</td>
+                <td>1</td>
+                <td>yes</td>
+                <td class="center">1022</td>
+                <td class="center">5</td>
+            </tr>
+            <tr>
+                <td>大小写字母</td>
+                <td>2</td>
+                <td>yes</td>
+                <td class="center">5892</td>
+                <td class="center">4</td>
+            </tr>
+            <tr>
+                <td>大写字母+数字</td>
+                <td>3</td>
+                <td>yes</td>
+                <td class="center">588</td>
+                <td class="center">4</td>
+            </tr>
+            <tr>
+                <td>小写字母+数字</td>
+                <td>4</td>
+                <td>no</td>
+                <td class="center">1228</td>
+                <td class="center">4</td>
+            </tr>
+            <tr>
+                <td>大写字母</td>
+                <td>5</td>
+                <td>no</td>
+                <td class="center">1500</td>
+                <td class="center">5</td>
+            </tr>
+            <tr>
+                <td>小写字母</td>
+                <td>6</td>
+                <td>yes</td>
+                <td class="center">902</td>
+                <td class="center">6</td>
+            </tr>
+            <tr>
+                <td>纯数字</td>
+                <td>7</td>
+                <td>yes</td>
+                <td class="center">1920</td>
+                <td class="center">4</td>
+            </tr>
+            </tbody>
+            <!--<tfoot>-->
+            <!--<tr>-->
+                <!--<th>类型</th>-->
+                <!--<th>模型编号</th>-->
+                <!--<th>是否存在干扰线</th>-->
+                <!--<th>样本数量</th>-->
+                <!--<th>长度</th>-->
+            <!--</tr>-->
+            <!--</tfoot>-->
+        </table>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $("#example-3").dataTable().yadcf([
+                    {column_number: 0},
+                    {column_number: 1, filter_type: 'text'},
+                    {column_number: 2, filter_type: 'text'},
+                    {column_number: 3, filter_type: 'range_number'},
+                    {column_number: 4},
+                ]);
+            });
+        </script>
+    </div>
+</div>
+
+

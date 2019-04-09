@@ -1,0 +1,37 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+.ipython/
+*.ipynb
+.env/
+.idea/
+*.egg-info/
+.installed.cfg
+*.egg
+.DS_Store
+*.ropeproject
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.cache
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+usm.db
+test_settings.py
+db.sqlite3

@@ -1,0 +1,121 @@
+<div class="login-container">
+
+	<div class="row">
+	
+		<div class="col-sm-7">
+			
+			<script type="text/javascript">
+				jQuery(document).ready(function($)
+				{
+					// Reveal Login form
+					setTimeout(function(){ $(".fade-in-effect").addClass('in'); }, 1);
+					
+					
+					// Clicking on thumbnail will focus on password field
+					$(".user-thumb a").on('click', function(ev)
+					{
+						ev.preventDefault();
+						$("#passwd").focus();
+					});
+					
+					
+					// Form validation and AJAX request
+					$(".lockcreen-form").validate({
+						rules: {
+							passwd: {
+								required: true
+							}
+						},
+						
+						messages: {
+							passwd: {
+								required: 'Please enter your password.'
+							}
+						},
+						
+						submitHandler: function(form)
+						{
+							showLoadingBar(70); // Fill progress bar to 70% (just a given value)
+							
+							var $passwd = $(form).find('#passwd'),
+							 	opts = {
+									"closeButton": true,
+									"debug": false,
+									"positionClass": "toast-top-full-width",
+									"onclick": null,
+									"showDuration": "300",
+									"hideDuration": "1000",
+									"timeOut": "5000",
+									"extendedTimeOut": "1000",
+									"showEasing": "swing",
+									"hideEasing": "linear",
+									"showMethod": "fadeIn",
+									"hideMethod": "fadeOut"
+								};
+							
+							$.ajax({
+								url: "data/login-check.php",
+								method: 'POST',
+								dataType: 'json',
+								data: {
+									do_login: true,
+									username: 'demo', // user is known in this case
+									passwd: $passwd.val(),
+								},
+								success: function(resp)
+								{
+									showLoadingBar({
+										delay: .5,
+										pct: 100,
+										finish: function(){
+											
+											if(resp.accessGranted)
+											{
+												// Redirect after successful login page (when progress bar reaches 100%)
+																								window.location.hash = '#/app/dashboard-variant-1';
+												//$('body').removeClass('login-page login-light lockscreen-page');
+																							}
+											else
+											{
+												toastr.error("You have entered wrong password, please try again. Password is <strong>demo</strong> :)", "Invalid Login!", opts);
+												$passwd.select();
+											}
+										}
+									});
+								}
+							});
+						}
+					});
+					
+					// Set Form focus
+					$("form#lockscreen .form-group:has(.form-control):first .form-control").focus();
+				});
+			</script>
+			
+			<form role="form" id="lockscreen" class="lockcreen-form fade-in-effect">
+				
+				<div class="user-thumb">
+					<a href="">
+						<img src="assets/images/user-5.png" class="img-responsive img-circle" />
+					</a>
+				</div>
+				
+				<div class="form-group">
+					<h3>Welcome back, John!</h3>
+					<p>Enter your password to access the admin.</p>
+					
+					<div class="input-group">
+						<input type="password" class="form-control input-dark" name="passwd" id="passwd" placeholder="Password" />
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-primary">Log In</button>
+						</span>
+					</div>
+				</div>
+				
+			</form>
+			
+		</div>
+		
+	</div>
+	
+</div>

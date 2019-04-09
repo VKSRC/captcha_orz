@@ -1,0 +1,245 @@
+<script type="text/ng-template" id="modal-1">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Basic Modal</h4>
+	</div>
+	
+	<div class="modal-body">
+		Hello I am a Modal!
+	</div>
+	
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">Close</button>
+		<button type="button" class="btn btn-info" ng-click="currentModal.dismiss();">Save changes</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="modal-2">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Custom Width Modal</h4>
+	</div>
+	
+	<div class="modal-body">
+		You can apply <strong>lg</strong> or <strong>sm</strong> modal size.
+	</div>
+	
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">Close</button>
+		<button type="button" class="btn btn-info" ng-click="currentModal.dismiss();">Save changes</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="modal-3">
+	<div class="modal-header">
+		<h4 class="modal-title">Confirm Modal</h4>
+	</div>
+	
+	<div class="modal-body">
+	
+		You can close this modal when you click on button only!
+		
+	</div>
+	
+	<div class="modal-footer">
+		<button type="button" class="btn btn-info" ng-click="currentModal.dismiss();">Continue</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="modal-4">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Long Height Modal</h4>
+	</div>
+	
+	<div class="modal-body">
+	
+		<img src="assets/images/eiffel.jpg" alt="" class="img-responsive" />
+		
+	</div>
+	
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">Close</button>
+		<button type="button" class="btn btn-info" ng-click="currentModal.dismiss();">Save changes</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="modal-5">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Modal Content is Responsive</h4>
+	</div>
+	
+	<div class="modal-body">
+	
+		<div class="row">
+			<div class="col-md-6">
+				
+				<div class="form-group">
+					<label for="field-1" class="control-label">Name</label>
+					
+					<input type="text" class="form-control" id="field-1" placeholder="John">
+				</div>	
+				
+			</div>
+			
+			<div class="col-md-6">
+				
+				<div class="form-group">
+					<label for="field-2" class="control-label">Surname</label>
+					
+					<input type="text" class="form-control" id="field-2" placeholder="Doe">
+				</div>	
+			
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="form-group">
+					<label for="field-3" class="control-label">Address</label>
+					
+					<input type="text" class="form-control" id="field-3" placeholder="Address">
+				</div>	
+				
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-4">
+				
+				<div class="form-group">
+					<label for="field-4" class="control-label">City</label>
+					
+					<input type="text" class="form-control" id="field-4" placeholder="Boston">
+				</div>	
+				
+			</div>
+			
+			<div class="col-md-4">
+				
+				<div class="form-group">
+					<label for="field-5" class="control-label">Country</label>
+					
+					<input type="text" class="form-control" id="field-5" placeholder="United States">
+				</div>	
+			
+			</div>
+			
+			<div class="col-md-4">
+				
+				<div class="form-group">
+					<label for="field-6" class="control-label">Zip</label>
+					
+					<input type="text" class="form-control" id="field-6" placeholder="123456">
+				</div>	
+			
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="form-group no-margin">
+					<label for="field-7" class="control-label">Personal Info</label>
+					
+					<textarea class="form-control autogrow" id="field-7" placeholder="Write something about yourself"></textarea>
+				</div>	
+				
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">Close</button>
+		<button type="button" class="btn btn-info" ng-click="currentModal.dismiss();">Save changes</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="modal-6">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Dynamic Content</h4>
+	</div>
+	
+	<div class="modal-body" ng-bind-html="modalContent">
+	</div>
+	
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">Close</button>
+		<button type="button" class="btn btn-info" ng-click="currentModal.dismiss();">Save changes</button>
+	</div>
+</script>
+
+<div class="row">
+	<div class="col-md-12">
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Modals Examples
+			</div>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th width="30%">Modal Type</th>
+						<th>Example</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="middle-align">Basic</td>
+						<td>
+							<a href="" ng-click="openModal('modal-1')" class="btn btn-primary btn-single btn-sm">Show Me</a>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="middle-align">Large Width</td>
+						<td>
+							<a href="" ng-click="openModal('modal-2', 'lg')" class="btn btn-primary btn-single btn-sm">Show Me</a>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="middle-align">Small Width</td>
+						<td>
+							<a href="" ng-click="openModal('modal-2', 'sm')" class="btn btn-primary btn-single btn-sm">Show Me</a>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="middle-align">Confirm to Close</td>
+						<td>
+							<a href="" ng-click="openModal('modal-3', null, 'static');" class="btn btn-primary btn-single btn-sm">Show Me</a>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="middle-align">Long Modal</td>
+						<td>
+							<a href="" ng-click="openModal('modal-4');" class="btn btn-primary btn-single btn-sm" >Show Me</a>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="middle-align">Responsive Modal</td>
+						<td>
+							<a href="" ng-click="openModal('modal-5', 'lg');" class="btn btn-primary btn-single btn-sm">Show Me</a>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="middle-align">Ajax Modal</td>
+						<td>
+							<a href="" ng-click="openAjaxModal('modal-6', 'data/ajax-content.txt');" class="btn btn-primary btn-single btn-sm">Show Me</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+	</div>
+</div>

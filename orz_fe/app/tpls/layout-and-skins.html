@@ -1,0 +1,290 @@
+
+<div class="jumbotron">
+	<h1>Layout &amp; Skins</h1>
+
+	<p>
+		Xenon Theme layout can be combined in many variants with sidebar and horizontal menu and offers a set of toggles (links) to manipulate with the theme layout. These features are made available via <strong>Angular Directives</strong> in <code>directives.js</code>
+	</p>
+
+	<p>
+		Layout Options are saved in Cookies in Angular Version and to activate them you need to put just one line in Main Controller:
+		<code>$layout.loadOptionsFromCookies();</code>
+	</p>
+
+	<br />
+	<a class="btn btn-primary btn-lg" href="#layout-variants" role="button">Go to Layout Variants</a>
+	<a class="btn btn-primary btn-lg" href="#layout-variants" role="button">Go to Theme Skins</a>
+</div>
+
+<h3 id="layout-toggles">
+	Layout Toggles
+	<br />
+	<small>Links that will automatically collapse or expand side panels, chat or user settings pane.</small>
+</h3>
+<br />
+
+
+<div class="row">
+
+	<div class="col-xs-3 text-muted">Link</div>
+	<div class="col-xs-9 text-muted">Code</div>
+
+	<div class="vspacer v3"></div>
+
+	<div class="col-sm-3">
+		<a href="" class="btn btn-secondary btn-block btn-icon btn-icon-standalone text-left" ng-click="sidebarToggle()">
+			<i class="fa-bars"></i>
+			<span>Toggle Sidebar</span>
+		</a>
+	</div>
+	<div class="col-sm-9">
+		<pre>&lt;a href=&quot;&quot; ng-click=&quot;sidebarToggle()&quot;&gt;Toggle Sidebar&lt;/a&gt;</pre>
+	</div>
+
+	<div class="clearfix"></div>
+	<div class="vspacer v4"></div>
+
+	<div class="col-sm-3">
+		<a href="" class="btn btn-secondary btn-block btn-icon btn-icon-standalone text-left" ng-click="chatToggle()">
+			<i class="fa-comment-o"></i>
+			<span>Toggle Chat</span>
+		</a>
+	</div>
+	<div class="col-sm-9">
+		<pre>&lt;a href=&quot;&quot; ng-click=&quot;chatToggle()&quot;&gt;Toggle Chat&lt;/a&gt;</pre>
+	</div>
+
+	<div class="clearfix"></div>
+	<div class="vspacer v4"></div>
+
+	<div class="col-sm-3">
+		<a href="" class="btn btn-secondary btn-block btn-icon btn-icon-standalone text-left" ng-click="settingsPaneToggle()">
+			<i class="linecons-user"></i>
+			<span>Toggle Settings Pane</span>
+		</a>
+	</div>
+	<div class="col-sm-9">
+		<pre>&lt;a href=&quot;&quot; ng-click=&quot;settingsPaneToggle()&quot;&gt;Toggle Settings Pane&lt;/a&gt;</pre>
+	</div>
+
+
+	<div class="clearfix"></div>
+	<div class="vspacer v4"></div>
+
+	<div class="col-sm-3">
+		<a href="" class="btn btn-secondary btn-block btn-icon btn-icon-standalone text-left" ng-click="settingsPaneToggle(true)">
+			<i class="linecons-cog"></i>
+			<span>Settings Pane /w Animation</span>
+		</a>
+	</div>
+	<div class="col-sm-9">
+		<pre>&lt;a href=&quot;&quot; ng-click=&quot;settingsPaneToggle(true)&quot;&gt;Toggle Settings Pane&lt;/a&gt;</pre>
+	</div>
+
+
+	<div class="clearfix"></div>
+	<div class="vspacer v4"></div>
+
+	<div class="col-sm-3">
+		<a href="" class="btn btn-secondary btn-block btn-icon btn-icon-standalone text-left" rel="go-top">
+			<i class="fa-arrow-up"></i>
+			<span>Go to Top</span>
+		</a>
+	</div>
+	<div class="col-sm-9">
+		<pre>&lt;a href=&quot;&quot; rel=&quot;go-top&quot;&gt;Go to Top&lt;/a&gt;</pre>
+	</div>
+
+</div>
+
+
+
+
+<br />
+<br />
+
+<h3 id="layout-variants">
+	Layout Generator
+	<br />
+	<small>Build your preferred layout with the options below:</small>
+</h3>
+
+
+<form ng-controller="LayoutVariantsCtrl">
+	<div class="row">
+
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Sidebar</div>
+				<div class="panel-body">
+
+					<div class="form-group">
+						<label>Sidebar Visibility</label>
+						<select ng-model="opts.sidebarVisible" class="form-control">
+							<option ng-repeat="st in sidebarVisible" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Sidebar Type</label>
+						<select ng-model="opts.sidebarType" class="form-control">
+							<option ng-repeat="st in sidebarTypes" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Fixed Sidebar</label>
+						<select ng-model="opts.fixedSidebar" class="form-control">
+							<option ng-repeat="st in fixedSidebar" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Sidebar Position</label>
+						<select ng-model="opts.sidebarPosition" class="form-control">
+							<option ng-repeat="st in sidebarPosition" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Toggle Other Menu Items</label>
+						<select ng-model="opts.sidebarToggleOthers" class="form-control">
+							<option ng-repeat="st in sidebarToggleOthers" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+						<p class="text-small">* Requires refresh</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Horizontal Menu</div>
+				<div class="panel-body">
+
+					<div class="form-group">
+						<label>Horizontal Menu Visibility</label>
+						<select ng-model="opts.horizontalVisible" class="form-control">
+							<option ng-repeat="st in horizontalVisible" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Fixed Menu</label>
+						<select ng-model="opts.fixedHorizontalMenu" class="form-control">
+							<option ng-repeat="st in fixedHorizontalMenu" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Minimal Menu</label>
+						<select ng-model="opts.minimalHorizontalMenu" class="form-control">
+							<option ng-repeat="st in minimalHorizontalMenu" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Open On Click</label>
+						<select ng-model="opts.horizontalOpenOnClick" class="form-control">
+							<option ng-repeat="st in horizontalOpenOnClick" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+						<p class="text-small">* Requires refresh</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Other Settings</div>
+				<div class="panel-body">
+
+					<div class="form-group">
+						<label>Chat Visibility</label>
+						<select ng-model="opts.chatVisibility" class="form-control">
+							<option ng-repeat="st in chatVisibility" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Boxed Container</label>
+						<select ng-model="opts.boxedContainer" class="form-control">
+							<option ng-repeat="st in boxedContainer" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Sidebar User Profile</label>
+						<select ng-model="opts.sidebarProfile" class="form-control">
+							<option ng-repeat="st in sidebarProfile" ng-selected="{{st.selected}}" value="{{st.value}}">{{st.text}}</option>
+						</select>
+					</div>
+
+					<hr />
+
+					<button type="button" class="btn btn-secondary" ng-click="resetOptions();">Reset Layout Options</button>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</form>
+
+
+<br />
+<br />
+
+<h3 id="layout-variants">
+	Theme Skins
+	<br />
+	<small>Select your preferred skin and components to apply it:</small>
+</h3>
+
+
+<form ng-controller="ThemeSkinsCtrl">
+	<div class="row">
+		<div class="col-sm-4">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Sidebar Skin</div>
+				<div class="panel-body">
+
+					<select ng-model="opts.sidebarSkin" class="form-control">
+						<option ng-repeat="skin in skins" value="{{skin.value}}" ng-selected="{{skin.value == opts.sidebarSkin}}">{{skin.name}}</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-4">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Horizontal Menu Skin</div>
+				<div class="panel-body">
+
+					<select ng-model="opts.horizontalMenuSkin" class="form-control">
+						<option ng-repeat="skin in skins" value="{{skin.value}}" ng-selected="{{skin.value == opts.horizontalMenuSkin}}">{{skin.name}}</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-4">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">User Info Navbar Skin</div>
+				<div class="panel-body">
+
+					<select ng-model="opts.userInfoNavbarSkin" class="form-control">
+						<option ng-repeat="skin in skins" value="{{skin.value}}" ng-selected="{{skin.value == opts.userInfoNavbarSkin}}">{{skin.name}}</option>
+					</select>
+					<p class="text-small">* Not applied when horizontal menu is visible</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</form>

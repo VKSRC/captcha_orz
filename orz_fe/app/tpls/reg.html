@@ -1,0 +1,183 @@
+<div class="login-container">
+
+    <div class="row">
+
+        <div class="col-sm-6">
+
+            <script type="text/javascript">
+                jQuery(document).ready(function ($) {
+                    // Reveal register form
+                    setTimeout(function () {
+                        $(".fade-in-effect").addClass('in');
+                    }, 1);
+
+
+                    // Validation and Ajax action
+                    $("form#register").validate({
+                        rules: {
+                            email: {
+                                required: true
+                            },
+
+                            username: {
+                                required: true
+                            },
+                            passwd: {
+                                required: true
+                            },
+                            code: {
+                                required: true
+                            }
+                        },
+
+                        messages: {
+                            email: {
+                                required: '请输入邮箱'
+                            },
+
+                            username: {
+                                required: '请输入昵称'
+                            },
+
+                            passwd: {
+                                required: '请输入密码'
+                            },
+
+                            code: {
+                                required: '请输入邀请码'
+                            }
+                        },
+
+                        submitHandler: function (form) {
+                            showLoadingBar(70);
+
+                            var opts = {
+                                "closeButton": true,
+                                "debug": false,
+                                "positionClass": "toast-top-full-width",
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+
+                            $.ajax({
+                                url: "api/accounts/reg/",
+                                method: 'POST',
+                                dataType: 'json',
+                                data: {
+                                    do_login: true,
+                                    email: $(form).find('#email').val(),
+                                    username: $(form).find('#username').val(),
+                                    password: $(form).find('#passwd').val(),
+                                    code: $(form).find('#code').val()
+                                },
+                                success: function (data, status, resp) {
+                                    showLoadingBar({
+                                        delay: .5,
+                                        pct: 100,
+                                        finish: function () {
+                                            if (data["result"] == "success") {
+                                                toastr.success("<strong>" + data["commit"] + "</strong> :)", "注册成功!", opts);
+                                                window.location.hash = '#/login';
+                                            }
+                                            else {
+                                                toastr.error("<strong>" + data["commit"] + "</strong> :)", "注册失败!", opts);
+                                                $(form).find('#passwd').select();
+                                            }
+                                        }
+                                    });
+
+                                }
+                            });
+
+                        }
+                    });
+
+                    // Set Form focus
+                    $("form#register .form-group:has(.form-control):first .form-control").focus();
+                });
+            </script>
+
+            <!-- Errors container -->
+            <div class="errors-container">
+            </div>
+            <!-- Add class "fade-in-effect" for login form effect -->
+            <form method="post" role="form" id="register" class="login-form fade-in-effect">
+
+                <div class="login-header">
+                    <a href="#/app/dashboard-variant-1" class="logo">
+                        <span>注册</span>
+                    </a>
+
+                    <p>请妥善保管账号信息!</p>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label" for="username">邮箱</label>
+                    <input type="text" class="form-control input-dark" name="email" id="email" autocomplete="off"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="username">昵称</label>
+                    <input type="text" class="form-control input-dark" name="username" id="username"
+                           autocomplete="off"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="passwd">密码</label>
+                    <input type="password" class="form-control input-dark" name="passwd" id="passwd"
+                           autocomplete="off"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="passwd">邀请码</label>
+                    <input type="password" class="form-control input-dark" name="code" id="code" autocomplete="off"/>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark  btn-block text-left">
+                        <i class="fa-lock"></i>
+                        提交注册
+                    </button>
+                </div>
+
+                <div class="login-footer">
+                    <a href="">Forgot your password?</a>
+                    <!--<div class="info-links">-->
+                    <!--<a href="">ToS</a> - -->
+                    <!--<a href="">Privacy Policy</a>-->
+                    <!--</div>-->
+                </div>
+            </form>
+
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <br><br><br><br>
+                <label class="control-label" for="passwd">邀请码获取通道</label>
+                <div>
+                    <br>目前获取邀请码的唯一通道是提交正确样本到邮箱 b3J6ZGF0YUBxcS5jb20=
+                    <br>样本格式：
+                    <br>1、请将验证码打包成rar或者zip格式
+                    <br>2、验证码名称必须符合以下规范 编号_内容.格式，eg: 1_abccd.jpeg
+                    <br>3、验证码数量不低于300
+                    <br>
+                </div>
+                <br>
+                <label class="control-label" for="passwd">积分奖励和消耗</label>
+                <div>
+                    <br>1、样本被采纳将根据样本数量进行积分奖励，1个样本获取1个积分
+                    <br>2、调用系统接口进行验证码识别会消耗积分，成功识别一次即消耗1积分
+                    <br>
+                </div>
+
+            </div>
+
+        </div>

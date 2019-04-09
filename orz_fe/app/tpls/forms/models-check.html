@@ -1,0 +1,117 @@
+<page-title ng-if="layoutOptions.pageTitles" title="模型匹配"
+            description=""></page-title>
+
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            模型校验
+            <small>当前可用模型 2</small>
+        </h3>
+    </div>
+
+    <div class="panel-body">
+
+        <script type="text/javascript">
+            var token = localStorage.getItem('authorization')
+            jQuery(document).ready(function ($) {
+                var i = 1,
+                    $example_dropzone_filetable = $("#example-dropzone-filetable"),
+                    example_dropzone = $("#advancedDropzone").dropzone({
+                        url: '/api/capcha_v1/checkmodel/?format=json',
+                        headers: {'authorization':token},
+                        // Events
+                        init: function () {
+
+                            this.on("success", function (file, xhr) {
+                                var res = '';
+                                for (key in xhr["message"]) {
+                                    res = res + key + ":" + xhr["message"][key] + ",";
+                                   // console.log(key, xhr["message"][key]);
+                                }
+                                ;
+                                console.log(res);
+                                file.fileEntryTd.find('td:last').html('<span class="text-success">' + res + '</span>');
+                                file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
+
+                            });
+
+                        },
+                        addedfile: function (file) {
+                            if (i == 1) {
+                                $example_dropzone_filetable.find('tbody').html('');
+                            }
+
+                            var size = parseInt(file.size / 1024, 10);
+                            size = size < 1024 ? (size + " KB") : (parseInt(size / 1024, 10) + " MB");
+
+                            var $entry = $('<tr>\
+										<td class="text-center">' + (i++) + '</td>\
+										<td>' + file.name + '</td>\
+										<td><div class="progress progress-striped"><div class="progress-bar progress-bar-warning"></div></div></td>\
+										<td>' + size + '</td>\
+										<td>Testing</td>\
+									</tr>');
+
+                            $example_dropzone_filetable.find('tbody').append($entry);
+                            file.fileEntryTd = $entry;
+                            file.progressBar = $entry.find('.progress-bar');
+                        },
+
+                        uploadprogress: function (file, progress, bytesSent) {
+                            file.progressBar.width(progress + '%');
+                        },
+
+                        success: function (file) {
+                            file.fileEntryTd.find('td:last').html('<span class="text-success">uploaded</span>');
+                            file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
+                        },
+
+                        error: function (file) {
+                            file.fileEntryTd.find('td:last').html('<span class="text-danger">Failed</span>');
+                            file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
+                        }
+                    });
+
+                $("#advancedDropzone").css({
+                    minHeight: 200
+                });
+
+            });
+        </script>
+
+        <br/>
+        <div class="row">
+            <div class="col-sm-3 text-center">
+
+                <div id="advancedDropzone" class="droppable-area">
+                    Drop Files Here
+                </div>
+
+            </div>
+            <div class="col-sm-9">
+
+                <table class="table table-bordered table-striped" id="example-dropzone-filetable">
+                    <thead>
+                    <tr>
+                        <th width="1%" class="text-center">#</th>
+                        <th width="50%">Name</th>
+                        <th width="20%">Upload Progress</th>
+                        <th>Size</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="5">Files list will appear here</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

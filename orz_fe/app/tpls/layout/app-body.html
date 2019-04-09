@@ -1,0 +1,27 @@
+<div class="sidebar-menu" ng-if="layoutOptions.sidebar.isVisible" ng-class="{'collapsed': layoutOptions.sidebar.isCollapsed, 'toggle-others': layoutOptions.sidebar.toggleOthers, 'fixed': layoutOptions.sidebar.isFixed && layoutOptions.container.isBoxed == false}">
+
+	<div class="sidebar-menu-inner">
+
+		<sidebar-logo ng-if="layoutOptions.horizontalMenu.isVisible == false"></sidebar-logo>
+
+		<sidebar-profile ng-if="layoutOptions.sidebar.userProfile"></sidebar-profile>
+
+		<sidebar-menu></sidebar-menu>
+
+	</div>
+
+</div>
+
+<div class="main-content">
+
+	<user-info-navbar ng-show="layoutOptions.horizontalMenu.isVisible == false"></user-info-navbar>
+
+	<ui-view class="main-content-view"></ui-view>
+
+	<site-footer></site-footer>
+
+</div>
+
+<sidebar-chat></sidebar-chat>
+
+<footer-chat></footer-chat>
